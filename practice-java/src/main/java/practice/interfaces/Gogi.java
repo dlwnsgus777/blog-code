@@ -2,8 +2,13 @@ package practice.interfaces;
 
 public class Gogi implements Food {
 
-    private String name = "beaf";
-    private Beaf beaf = new Beaf();
+    private String name;
+    private Beaf beaf;
+
+    public Gogi() {
+        this.name = "pork";
+        this.beaf = new Beaf();
+    }
 
     @Override
     public void eat() {
@@ -12,6 +17,11 @@ public class Gogi implements Food {
 
     @Override
     public String name() {
-        return this.beaf.getName();
+        this.setName("pork 333333");
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
