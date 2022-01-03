@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebfluxTestPracticeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebfluxTestPracticeApplication.class, args);
+		System.out.println("WebfluxTestPracticeApplication.main");
+//		SpringApplication.run(WebfluxTestPracticeApplication.class, args);
 	}
 
 }
