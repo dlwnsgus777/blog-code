@@ -4,13 +4,22 @@ package com.blog.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ListTestExample {
+
+   public static class User {
+      private final String name;
+      private final String gender;
+
+      public User(String name, String gender) {
+         this.name = name;
+         this.gender = gender;
+      }
+   }
 
    @Test
    @DisplayName("List 테스트")
