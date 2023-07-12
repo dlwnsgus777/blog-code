@@ -77,6 +77,16 @@ public class ModernJavaChapter6 {
             )
       );
 
+      Map<Boolean, List<Dish>> partitionedMenu = menu.stream().collect(Collectors.partitioningBy(Dish::isVegetarian));
+
+      Map<Boolean, Map<Dish.Type, List<Dish>>> vegetarianDishedByType = menu.stream().collect(
+            Collectors.partitioningBy(Dish::isVegetarian,
+                  Collectors.groupingBy(Dish::getType))
+      );
+
+      menu.stream().collect(Collectors.partitioningBy(Dish::isVegetarian,
+                            Collectors.partitioningBy(d -> d.getCalories() > 500)));
+
    }
    public enum CaloricLevel {
       DIET,
