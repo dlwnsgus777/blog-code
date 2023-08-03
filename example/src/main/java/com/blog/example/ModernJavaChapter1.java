@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class ModernJavaChapter1 {
    public static void main(String[] args) {
@@ -56,12 +57,16 @@ public class ModernJavaChapter1 {
    }
 
 
-
    @Getter
    @AllArgsConstructor
    private static class Apple {
-      private final Color color;
-      private final int weight;
+      private  Color color;
+      private  int weight;
+
+      Apple(int weight) {
+         this.weight = weight;
+      }
+
    }
 
    interface ApplePredicate {

@@ -3,6 +3,9 @@ package com.blog.example;
 import com.blog.morden.example.Dish;
 import com.blog.morden.example.DishesFactory;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -24,5 +27,18 @@ public class ModernJavaChapter9 {
             System.out.println(a);
          }
       };
+
+      String oneLine = processFile(b -> b.readLine());
+      String twoLine = processFile(b -> b.readLine( + b.readLine()));
+   }
+
+   public static String processFile(ModernJavaChapter91.BufferedReaderProcessor p) throws IOException {
+      try(BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+         return p.process(br);
+      }
+   }
+
+   public interface BufferedReaderProcessor {
+      String process(BufferedReader b) throws IOException;
    }
 }
