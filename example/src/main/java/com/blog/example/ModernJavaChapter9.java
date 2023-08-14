@@ -28,15 +28,15 @@ public class ModernJavaChapter9 {
          }
       };
 
-      String oneLine = processFile(b -> b.readLine());
-      String twoLine = processFile(b -> b.readLine( + b.readLine()));
+//      String oneLine = processFile(b -> b.readLine());
+//      String twoLine = processFile(b -> b.readLine( + b.readLine()));
    }
 
-   public static String processFile(ModernJavaChapter91.BufferedReaderProcessor p) throws IOException {
-      try(BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
-         return p.process(br);
-      }
-   }
+//   public static String processFile(ModernJavaChapter91.BufferedReaderProcessor p) throws IOException {
+//      try(BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+//         return p.process(br);
+//      }
+//   }
 
    public interface BufferedReaderProcessor {
       String process(BufferedReader b) throws IOException;
