@@ -35,17 +35,17 @@ public class ModernJavaChapter15 {
 //   }
 
    public static void main(String[] args) {
-      ExecutorService executorService = Executors.newFixedThreadPool(10);
-      int x = 1337;
-
-      CompletableFuture<Integer> a = new CompletableFuture<>();
-      CompletableFuture<Integer> b = new CompletableFuture<>();
-      CompletableFuture<Integer> c = a.thenCombine(b, (y, z) -> y + z);
-      executorService.submit(() -> a.complete(f(x)));
-      executorService.submit(() -> b.complete(g(x)));
-
-      System.out.println(c.get());
-
-      executorService.shutdown();
+//      ExecutorService executorService = Executors.newFixedThreadPool(10);
+//      int x = 1337;
+//
+//      CompletableFuture<Integer> a = new CompletableFuture<>();
+//      CompletableFuture<Integer> b = new CompletableFuture<>();
+//      CompletableFuture<Integer> c = a.thenCombine(b, (y, z) -> y + z);
+//      executorService.submit(() -> a.complete(f(x)));
+//      executorService.submit(() -> b.complete(g(x)));
+//
+//      System.out.println(c.get());
+//
+//      executorService.shutdown();
    }
 }

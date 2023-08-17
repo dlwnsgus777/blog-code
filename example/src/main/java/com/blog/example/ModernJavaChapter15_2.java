@@ -16,6 +16,8 @@ public class ModernJavaChapter15_2 {
       c2.onNext(20);
       c1.onNext(50);
 
+      System.out.println("C3 left : " + c3.left);
+      System.out.println("C3 right : " + c3.right);
    }
 
    public static class ArithmeticCell extends SimpleCell {
@@ -44,6 +46,10 @@ public class ModernJavaChapter15_2 {
 
       public SimpleCell(String name) {
          this.name = name;
+      }
+
+      public int getValue() {
+         return value;
       }
 
       @Override
