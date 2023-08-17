@@ -7,15 +7,34 @@ public class ModernJavaChapter15_2 {
    public static void main(String[] args) {
       SimpleCell c2 = new SimpleCell("c2");
       SimpleCell c1 = new SimpleCell("c1");
-      SimpleCell c3 = new SimpleCell("c3");
+      ArithmeticCell c3 = new ArithmeticCell("c3");
 
-      c1.subscribe(c3);
+      c1.subscribe(c3::setLeft);
+      c2.subscribe(c3::setRight);
 
       c1.onNext(10);
       c2.onNext(20);
       c1.onNext(50);
 
-      System.out.println(c3.value);
+   }
+
+   public static class ArithmeticCell extends SimpleCell {
+      private int left;
+      private int right;
+
+      public ArithmeticCell(String name) {
+         super(name);
+      }
+
+      public void setLeft(int left) {
+         this.left = left;
+         onNext(left + this.right);
+      }
+
+      public void setRight(int right) {
+         this.right = right;
+         onNext(right + this.left);
+      }
    }
 
    public static class SimpleCell implements Publisher<Integer>, Subscriber<Integer> {
