@@ -1,4 +1,4 @@
-package com.blog.morden.example;
+package com.code.morden.example;
 
 import java.util.Arrays;
 import java.util.List;

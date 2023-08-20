@@ -1,12 +1,8 @@
-package com.blog.example;
+package com.code.example;
 
-import com.blog.morden.example.Dish;
-import com.blog.morden.example.DishesFactory;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import com.code.morden.example.Dish;
+import com.code.morden.example.DishesFactory;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;

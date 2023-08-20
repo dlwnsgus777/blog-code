@@ -1,4 +1,4 @@
-package com.blog.example;
+package com.code.example;
 
 public class ModernJavaChapter13 {
    public static void main(String[] args) {

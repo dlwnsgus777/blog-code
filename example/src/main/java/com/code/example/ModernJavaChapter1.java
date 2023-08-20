@@ -1,11 +1,10 @@
-package com.blog.example;
+package com.code.example;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 public class ModernJavaChapter1 {
    public static void main(String[] args) {

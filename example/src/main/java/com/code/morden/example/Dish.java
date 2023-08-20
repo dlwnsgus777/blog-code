@@ -1,4 +1,4 @@
-package com.blog.morden.example;
+package com.code.morden.example;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
