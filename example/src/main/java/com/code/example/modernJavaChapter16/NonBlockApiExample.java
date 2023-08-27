@@ -71,14 +71,38 @@ public class NonBlockApiExample {
 //            .collect(Collectors.toList());
 //   }
 
-   public static List<String> findPrices(String product, List<Shop> shops) {
-      List<CompletableFuture<String>> priceFutures = shops.stream()
-            .map(shop -> CompletableFuture.supplyAsync(
-                  () -> shop.getName() + " price is " + shop.getPrice(product)
-            )).collect(Collectors.toList());
+//   public static List<String> findPrices(String product, List<Shop> shops) {
+//      List<CompletableFuture<String>> priceFutures = shops.stream()
+//            .map(shop -> CompletableFuture.supplyAsync(
+//                  () -> shop.getName() + " price is " + shop.getPrice(product)
+//            )).collect(Collectors.toList());
+//
+//      return priceFutures.stream()
+//            .map(CompletableFuture::join)
+//            .collect(Collectors.toList());
+//   }
 
-      return priceFutures.stream()
-            .map(CompletableFuture::join)
+   public static List<String> findPrices(String product, List<Shop> shops) {
+      return shops.stream()
+            .map(shop -> shop.getPrice(product))
+            .map(Quote::parse)
+            .map(Discount::applyDiscount)
             .collect(Collectors.toList());
    }
+
+//   public static List<String> findPrices(String product, List<Shop> shops, Executor executor) {
+//      List<CompletableFuture<String>> priceFutures = shops.stream()
+//            .map(shop -> CompletableFuture.supplyAsync(
+//                  () -> shop.getPrice(product), executor))
+//            .map(future -> future.thenApply(Quote::parse))
+//            .map(future -> future.thenCompose(
+//                  quote -> CompletableFuture.supplyAsync(
+//                        () -> Discount.applyDiscount(quote), executor
+//                  )
+//            )).collect(Collectors.toList());
+//
+//      return priceFutures.stream()
+//            .map(CompletableFuture::join)
+//            .collect(Collectors.toList());
+//   }
 }
