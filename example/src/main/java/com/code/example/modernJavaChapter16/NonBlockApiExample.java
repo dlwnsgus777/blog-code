@@ -109,7 +109,7 @@ public class NonBlockApiExample {
    public Stream<CompletableFuture<String>> findPricesStream(String product, List<Shop> shops, Executor executor) {
       return shops.stream()
               .map(shop -> CompletableFuture.supplyAsync(
-                      () -> shop.getPrice(product, executor))
+                      () -> shop.getPrice(product), executor)
               ).map(future -> future.thenApply(Quote::parse))
               .map(future -> future.thenCompose(quote ->
                   CompletableFuture.supplyAsync(
