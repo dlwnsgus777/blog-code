@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NonBlockApiExample {
    public static void main(String[] args) {
@@ -105,4 +106,16 @@ public class NonBlockApiExample {
 //            .map(CompletableFuture::join)
 //            .collect(Collectors.toList());
 //   }
+   public Stream<CompletableFuture<String>> findPricesStream(String product, List<Shop> shops, Executor executor) {
+      return shops.stream()
+              .map(shop -> CompletableFuture.supplyAsync(
+                      () -> shop.getPrice(product, executor))
+              ).map(future -> future.thenApply(Quote::parse))
+              .map(future -> future.thenCompose(quote ->
+                  CompletableFuture.supplyAsync(
+                          () -> Discount.applyDiscount(quote),
+                          executor
+                  )
+              ));
+   }
 }
