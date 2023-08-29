@@ -1,5 +1,7 @@
 package com.code.example.modernJavaChapter16;
 
+import io.reactivex.Observable;
+
 public class Quote {
    private final String shopName;
    private final double price;
