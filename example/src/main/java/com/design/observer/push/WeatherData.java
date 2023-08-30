@@ -1,4 +1,4 @@
-package com.design.observer;
+package com.design.observer.push;
 
 import java.util.ArrayList;
 import java.util.List;

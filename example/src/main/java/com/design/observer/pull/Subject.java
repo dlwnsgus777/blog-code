@@ -1,4 +1,5 @@
-package com.design.observer;
+package com.design.observer.pull;
+
 
 public interface Subject {
    void registerObserver(Observer o);
