@@ -1,4 +1,4 @@
-package com.code.example.mordernjavacahpter17;
+package com.code.example.modernjavachapter17;
 
 import java.util.Random;
 
