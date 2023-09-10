@@ -1,8 +1,8 @@
-package com.design.factory.version1;
+package com.design.factory;
 
 import com.design.factory.Pizza;
 
-public class CheesPizza implements Pizza {
+public class BasicPizza implements Pizza {
    @Override
    public void prepare() {
 

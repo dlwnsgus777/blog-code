@@ -1,4 +1,4 @@
-package com.design.factory.version1;
+package com.design.factory;
 
 import com.design.factory.Pizza;
 
