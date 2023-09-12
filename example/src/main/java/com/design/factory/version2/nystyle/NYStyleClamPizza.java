@@ -1,4 +1,4 @@
-package com.design.factory.version2;
+package com.design.factory.version2.nystyle;
 
 import com.design.factory.Pizza;
 
