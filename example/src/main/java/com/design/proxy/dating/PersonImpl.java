@@ -7,6 +7,12 @@ public class PersonImpl implements Person {
   int rating;
   int ratingCount = 0;
 
+  public PersonImpl(final String name, final String gender, final String interests) {
+    this.name = name;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
   @Override
   public String getName() {
     return name;
