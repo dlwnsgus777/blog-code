@@ -27,7 +27,42 @@ public class DuckSimulator {
     final Quackable rubberDuck = duckFactory.createRubberDuck();
     final Quackable gooseDuck = new GooseAdapter(new Goose());
 //
-    System.out.println("\n 오리 시뮬레이션 게임 (+ 컴포지트)");
+//    System.out.println("\n 오리 시뮬레이션 게임 (+ 컴포지트)");
+//
+//    final Flock flockOfDucks = new Flock();
+//    flockOfDucks.add(redheadDuck);
+//    flockOfDucks.add(duckCall);
+//    flockOfDucks.add(rubberDuck);
+//    flockOfDucks.add(gooseDuck);
+//
+//    final Flock flockOfMallards = new Flock();
+//
+//
+//    final Quackable mallardOne = duckFactory.createMallardDuck();
+//    final Quackable mallardTwo = duckFactory.createMallardDuck();
+//    final Quackable mallardThree = duckFactory.createMallardDuck();
+//    final Quackable mallardFour = duckFactory.createMallardDuck();
+//
+//    flockOfMallards.add(mallardOne);
+//    flockOfMallards.add(mallardTwo);
+//    flockOfMallards.add(mallardThree);
+//    flockOfMallards.add(mallardFour);
+//
+//    flockOfDucks.add(flockOfMallards);
+//
+//    System.out.println("\n 오리 시뮬레이션 게임: 전체 무리");
+//    simulate(flockOfDucks);
+//
+//    System.out.println("\n 오리 시뮬레이션 게임: 물오리 무리");
+//    simulate(flockOfMallards);
+
+
+
+    System.out.println("\n 오리 시뮬레이션 게임 (+ 옵저버)");
+
+
+    final Quackologist quackologist = new Quackologist();
+
 
     final Flock flockOfDucks = new Flock();
     flockOfDucks.add(redheadDuck);
@@ -35,26 +70,12 @@ public class DuckSimulator {
     flockOfDucks.add(rubberDuck);
     flockOfDucks.add(gooseDuck);
 
+    flockOfDucks.registerObserver(quackologist);
+
+    flockOfDucks.quack();
+
     final Flock flockOfMallards = new Flock();
 
-
-    final Quackable mallardOne = duckFactory.createMallardDuck();
-    final Quackable mallardTwo = duckFactory.createMallardDuck();
-    final Quackable mallardThree = duckFactory.createMallardDuck();
-    final Quackable mallardFour = duckFactory.createMallardDuck();
-
-    flockOfMallards.add(mallardOne);
-    flockOfMallards.add(mallardTwo);
-    flockOfMallards.add(mallardThree);
-    flockOfMallards.add(mallardFour);
-
-    flockOfDucks.add(flockOfMallards);
-
-    System.out.println("\n 오리 시뮬레이션 게임: 전체 무리");
-    simulate(flockOfDucks);
-
-    System.out.println("\n 오리 시뮬레이션 게임: 물오리 무리");
-    simulate(flockOfMallards);
 
     System.out.println("오리가 소래 낸 횟수 : " + QuackCounter.getQuacks() + " 번");
   }
