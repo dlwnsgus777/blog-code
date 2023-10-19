@@ -16,9 +16,17 @@ public class Member {
   @JoinColumn(name = "TEAM_ID")
   private Team team;
 
+  public Member() {
+
+  }
+
   // 연관관계 설정
   public void setTeam(Team team) {
+    if (this.team != null) {
+      this.team.getMembers().remove(this);
+    }
     this.team = team;
+    team.getMembers().add(this);
   }
 
   public Team getTeam() {

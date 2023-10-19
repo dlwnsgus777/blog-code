@@ -25,6 +25,10 @@ public class Team {
     this.name = name;
   }
 
+  public List<Member> getMembers() {
+    return members;
+  }
+
   public Team() {
 
   }

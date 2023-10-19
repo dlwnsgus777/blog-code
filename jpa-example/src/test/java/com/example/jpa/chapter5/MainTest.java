@@ -54,4 +54,22 @@ public class MainTest {
     Member member1 = em.find(Member.class, "member1");
     member1.setTeam(null); // 연관관계 제거
   }
+
+  @Test
+  void test5() {
+    Team team1 = new Team("team1", "팀1");
+    em.persist(team1);
+
+    Member member1 = new Member("member1", "회원1");
+
+    member1.setTeam(team1);
+    team1.getMembers().add(member1);
+    em.persist(member1);
+
+    Member member2 = new Member("member2", "회원2");
+
+    member2.setTeam(team1);
+    team1.getMembers().add(member2);
+    em.persist(member2);
+  }
 }
