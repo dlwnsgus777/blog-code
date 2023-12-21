@@ -1,6 +1,7 @@
 package com.example.jpa.chapter9;
 
 import javax.persistence.*;
+import java.util.HashSet;
 
 @Entity
 public class Member {
@@ -11,9 +12,10 @@ public class Member {
   @Embedded
   Address homeAddress;
 
-  @Embedded
-  @AttributeOverrides({
-    @AttributeOverride(name = "city", column = @Column(name = "COMPANY_CITY"))
-  })
-  Address companyAddress;
+  @ElementCollection
+  @CollectionTable(name = "FAVORITE_FOODS",
+    joinColumns = @JoinColumn(name = "MEMBER_ID")
+  )
+  @Column(name = "FOOD_NAME")
+  private set<String> favoriteFoods = new HashSet<String>();
 }
