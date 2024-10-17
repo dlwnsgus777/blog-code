@@ -20,14 +20,22 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+
+	// DB 관련 의존성
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 	runtimeOnly 'com.h2database:h2'
+
+	// 테스트 관련 의존성
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation("io.kotest:kotest-runner-junit5:$version")
+	testImplementation("io.kotest:kotest-assertions-core:$version")
 }
 
 kotlin {
