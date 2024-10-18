@@ -11,6 +11,7 @@ class MemberService(
     private val memberMapper: MemberMapper
 ) {
     fun getMember(memberId: Long): MemberDto {
-        TODO("Not yet implemented")
+        val memberDto = memberMapper.getMember(memberId)
+        return memberDto
     }
 }

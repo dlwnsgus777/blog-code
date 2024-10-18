@@ -1,5 +1,10 @@
 package com.blog.code.mybatisdomain.member.application.dto
 
-class MemberDto {
+
+data class MemberDto(
+    val id: Long?,
+    val username: String,
+    val email: String,
+) {
 
 }
