@@ -1,14 +1,14 @@
-package com.blog.code.mybatisdomain.member.api
+package com.blog.code.mybatisdomain.memberDomain.api
 
-import com.blog.code.mybatisdomain.member.application.MemberService
-import com.blog.code.mybatisdomain.member.application.dto.MemberDto
+import com.blog.code.mybatisdomain.memberMybatis.application.MemberService
+import com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api/v1/members")
+@RequestMapping("api/v2/members")
 class MemberController(
     private val memberService: MemberService
 ) {

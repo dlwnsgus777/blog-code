@@ -1,7 +1,7 @@
-package com.blog.code.mybatisdomain.member.application
+package com.blog.code.mybatisdomain.memberMybatis.application
 
-import com.blog.code.mybatisdomain.member.application.dto.MemberDto
-import com.blog.code.mybatisdomain.member.infra.MemberMapper
+import com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto
+import com.blog.code.mybatisdomain.memberMybatis.infra.MemberMapper
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

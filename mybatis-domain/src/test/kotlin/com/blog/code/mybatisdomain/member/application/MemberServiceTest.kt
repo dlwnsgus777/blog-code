@@ -1,7 +1,8 @@
 package com.blog.code.mybatisdomain.member.application
 
-import com.blog.code.mybatisdomain.member.application.dto.MemberDto
-import com.blog.code.mybatisdomain.member.infra.MemberMapper
+import com.blog.code.mybatisdomain.memberMybatis.application.MemberService
+import com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto
+import com.blog.code.mybatisdomain.memberMybatis.infra.MemberMapper
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,7 +22,7 @@ class MemberServiceTest : AnnotationSpec() {
     @Test
     fun `회원을_저장한다`() {
         memberMapper.createMember(MemberDto(id = null, username = "username123123", email = "email"))
-        val result:MemberDto = memberService.getMember(1)
+        val result: MemberDto = memberService.getMember(1)
         result.username shouldBe "username123123"
     }
 }
