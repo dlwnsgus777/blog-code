@@ -5,7 +5,8 @@ import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
 
 @Mapper
-interface MemberMapper {
+interface MemberMapperV1 {
     fun getMember(@Param("memberId") memberId: Long): MemberDto
     fun createMember(memberDto: MemberDto)
+    fun changeEmail(memberId: Long, email: String)
 }
