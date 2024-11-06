@@ -9,4 +9,5 @@ interface MemberMapperV1 {
     fun getMember(@Param("memberId") memberId: Long): MemberDto
     fun createMember(memberDto: MemberDto)
     fun changeEmail(memberId: Long, email: String)
+    fun findCanModifyMember(memberId: Long): MemberDto?
 }

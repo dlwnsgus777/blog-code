@@ -2,17 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.blog.code.mybatisdomain.memberMybatis.infra.MemberMapperV1">
-  <select id="getMember" resultType="com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto">
-    select id, username, email
-    from members
-    where id = ${memberId}
-  </select>
+    <select id="getMember" resultType="com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto">
+        select id, username, email, last_modify_date
+        from members
+        where id = ${memberId}
+    </select>
 
-  <insert id="createMember" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto">
-    insert into members(username, email) values (#{username}, #{email})
-  </insert>
+    <insert id="createMember" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto">
+        insert into members(username, email, last_modify_date)
+        values (#{username}, #{email}, #{lastModifyDate})
+    </insert>
 
-  <update id="changeEmail" >
-    update members set email = #{email} where id = #{memberId}
-  </update>
+    <update id="changeEmail">
+        update members
+        set email = #{email}
+        where id = #{memberId}
+    </update>
+
+    <select id="findCanModifyMember" resultType="com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto">
+        SELECT id, username, email, last_modify_date
+        FROM members
+        WHERE id = #{memberId}
+        AND (last_modify_date IS NULL OR last_modify_date <![CDATA[<]]> DATEADD('DAY', -5, CURRENT_TIMESTAMP));
+    </select>
 </mapper>

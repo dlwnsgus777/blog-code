@@ -16,6 +16,8 @@ class MemberServiceV1(
     }
 
     fun changeEmail(memberId: Long, email: String) {
-        memberMapperV1.changeEmail(memberId, email)
+        memberMapperV1.findCanModifyMember(memberId)?.let {
+            memberMapperV1.changeEmail(memberId, email)
+        }
     }
 }
