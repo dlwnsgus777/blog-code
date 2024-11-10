@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.code.mybatisdomain.memberDomain.infra.MemberMapperV2">
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.blog.code.mybatisdomain.memberDomain.infra.vo.MemberVO">
+        insert into members(username, email, last_modify_date)
+        values (#{username}, #{email}, #{lastModifyDate})
+    </insert>
+
+    <update id="changeEmail">
+        update members
+        set email = #{email}
+        where id = #{memberId}
+    </update>
+
+    <select id="findById" resultType="com.blog.code.mybatisdomain.memberDomain.infra.vo.MemberVO">
+        SELECT id, username, email, last_modify_date
+        FROM members
+        WHERE id = #{memberId}
+        AND (last_modify_date IS NULL OR last_modify_date <![CDATA[<]]> DATEADD('DAY', -5, CURRENT_TIMESTAMP));
+    </select>
+</mapper>
