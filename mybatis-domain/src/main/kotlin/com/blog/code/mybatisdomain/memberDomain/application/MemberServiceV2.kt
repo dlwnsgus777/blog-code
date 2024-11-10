@@ -2,8 +2,7 @@ package com.blog.code.mybatisdomain.memberDomain.application
 
 import com.blog.code.mybatisdomain.memberDomain.application.domain.Member
 import com.blog.code.mybatisdomain.memberDomain.repository.MemberRepository
-import com.blog.code.mybatisdomain.memberMybatis.application.dto.MemberDto
-import com.blog.code.mybatisdomain.memberMybatis.infra.MemberMapperV1
+import org.apache.coyote.BadRequestException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -13,7 +12,15 @@ class MemberServiceV2(
     private val memberRepository: MemberRepository
 ) {
     fun getMember(memberId: Long): Member {
-        val member = memberRepository.findById(memberId)
-        return member
+        return memberRepository.findById(memberId) ?:throw BadRequestException("Member Not Found")
+    }
+
+    fun changeEmail(memberId: Long, email: String) {
+        memberRepository.findById(memberId)?.let {member: Member ->
+            if (member.canChangeEmail()) {
+                member.changeEmail(email)
+                memberRepository.save(member)
+            }
+        }
     }
 }

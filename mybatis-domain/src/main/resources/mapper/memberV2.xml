@@ -9,16 +9,15 @@
         values (#{username}, #{email}, #{lastModifyDate})
     </insert>
 
-    <update id="changeEmail">
+    <update id="update" parameterType="com.blog.code.mybatisdomain.memberDomain.infra.vo.MemberVO">
         update members
-        set email = #{email}
-        where id = #{memberId}
+        set email = #{email}, username = #{username}, last_modify_date = #{lastModifyDate}
+        where id = #{id}
     </update>
 
     <select id="findById" resultType="com.blog.code.mybatisdomain.memberDomain.infra.vo.MemberVO">
         SELECT id, username, email, last_modify_date
         FROM members
         WHERE id = #{memberId}
-        AND (last_modify_date IS NULL OR last_modify_date <![CDATA[<]]> DATEADD('DAY', -5, CURRENT_TIMESTAMP));
     </select>
 </mapper>

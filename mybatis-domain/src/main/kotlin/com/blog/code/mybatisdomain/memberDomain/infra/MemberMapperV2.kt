@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Param
 interface MemberMapperV2 {
     fun findById(@Param("memberId") id: Long): MemberVO
     fun save(memberVO: MemberVO)
+    fun update(memberVO: MemberVO)
 }

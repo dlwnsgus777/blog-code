@@ -17,4 +17,15 @@ data class MemberVO(
             lastModifyDate = lastModifyDate,
         )
     }
+
+    companion object {
+        fun of(member: Member): MemberVO {
+            return MemberVO(
+                id = member.id,
+                username = member.username,
+                email = member.email,
+                lastModifyDate = member.lastModifyDate,
+            )
+        }
+    }
 }

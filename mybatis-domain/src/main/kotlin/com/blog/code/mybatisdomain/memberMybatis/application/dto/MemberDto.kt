@@ -1,6 +1,5 @@
 package com.blog.code.mybatisdomain.memberMybatis.application.dto
 
-import org.apache.ibatis.type.Alias
 import java.time.LocalDateTime
 
 data class MemberDto(
